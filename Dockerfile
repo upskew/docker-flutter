@@ -9,6 +9,9 @@ RUN flutter config --no-analytics
 # Switch to master channel
 RUN flutter channel master
 
+# Run Flutter doctor
+RUN flutter doctor -v
+
 # Install Node.js
 RUN apt-get update
 RUN apt-get -y install curl gnupg
