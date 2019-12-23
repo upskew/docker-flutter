@@ -6,11 +6,14 @@ USER root
 # Disable Google Analytics
 RUN flutter config --no-analytics
 
-# Switch to master channel
-RUN flutter channel master
+# Artifact precache
+RUN flutter precache
 
 # Run Flutter doctor
 RUN flutter doctor -v
+
+# Switch to master channel
+RUN flutter channel master
 
 # Install Node.js
 RUN apt-get update
