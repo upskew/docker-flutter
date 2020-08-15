@@ -12,15 +12,11 @@ RUN flutter upgrade
 # Run Flutter doctor
 RUN flutter doctor -v
 
-USER root
-
 # Install Node.js
-RUN apt-get update
-RUN apt-get -y install curl gnupg
+RUN sudo apt-get update
+RUN sudo apt-get -y install curl gnupg
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
-RUN apt-get -y install nodejs
+RUN sudo apt-get -y install nodejs
 
 # Install sqlite
-RUN apt-get -y install sqlite3 libsqlite3-dev
-
-USER cirrus
+RUN sudo apt-get -y install sqlite3 libsqlite3-dev
