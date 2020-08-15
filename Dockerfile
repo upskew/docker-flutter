@@ -1,8 +1,5 @@
 FROM cirrusci/flutter
 
-# Run as ROOT
-USER root
-
 # Disable Google Analytics
 RUN flutter config --no-analytics
 
