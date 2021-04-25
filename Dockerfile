@@ -1,19 +1,22 @@
-FROM cirrusci/flutter
+# Flutter base image
+# https://github.com/cirruslabs/docker-images-flutter
+# License: MIT (https://github.com/cirruslabs/docker-images-flutter/blob/master/LICENSE)
+FROM cirrusci/android-sdk:30
 
-# Run as ROOT
 USER root
+ARG flutter_version
 
-# Disable Google Analytics
-RUN flutter config --no-analytics
+ENV FLUTTER_HOME=${HOME}/sdks/flutter \
+    FLUTTER_VERSION=$flutter_version
+ENV FLUTTER_ROOT=$FLUTTER_HOME
 
-# Switch to master channel
-RUN flutter channel master
+ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
-# Upgrade Flutter
-RUN flutter upgrade
+RUN git clone --depth 1 --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_HOME}
 
-# Run Flutter doctor
-RUN flutter doctor -v
+RUN yes | flutter doctor --android-licenses \
+    && flutter doctor \
+    && chown -R root:root ${FLUTTER_HOME}
 
 # Install Node.js
 RUN sudo apt-get update
