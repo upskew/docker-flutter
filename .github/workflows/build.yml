@@ -1,0 +1,13 @@
+name: "trigger image build"
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger image build
+        env:
+          BUILD_TRIGGER_ENDPOINT: ${{ secrets.DOCKER_HUB_BUILD_TRIGGER_ENDPOINT }}
+        run: |
+          curl --silent --show-error --fail -X POST "${BUILD_TRIGGER_ENDPOINT}"
