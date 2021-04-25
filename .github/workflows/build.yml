@@ -11,4 +11,4 @@ jobs:
         env:
           BUILD_TRIGGER_ENDPOINT: ${{ secrets.DOCKER_HUB_BUILD_TRIGGER_ENDPOINT }}
         run: |
-          curl --silent --show-error --fail -X POST "${BUILD_TRIGGER_ENDPOINT}"
+          curl --silent --show-error --fail -o /dev/null -w "%{http_code}"  -X POST "${BUILD_TRIGGER_ENDPOINT}"
