@@ -1,7 +1,7 @@
 name: "trigger image build"
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/1 * * * *"
 jobs:
   stale:
     runs-on: ubuntu-latest
