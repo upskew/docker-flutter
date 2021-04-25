@@ -4,10 +4,9 @@
 FROM cirrusci/android-sdk:30
 
 USER root
-ARG flutter_version
 
 ENV FLUTTER_HOME=${HOME}/sdks/flutter \
-    FLUTTER_VERSION=$flutter_version
+    FLUTTER_VERSION=master
 ENV FLUTTER_ROOT=$FLUTTER_HOME
 
 ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
