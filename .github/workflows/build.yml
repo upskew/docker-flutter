@@ -2,6 +2,7 @@ name: "trigger image build"
 on:
   schedule:
     - cron: "*/1 * * * *"
+  workflow_dispatch:
 jobs:
   stale:
     runs-on: ubuntu-latest
