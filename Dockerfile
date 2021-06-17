@@ -20,7 +20,7 @@ RUN yes | flutter doctor --android-licenses \
 # Install Node.js
 RUN sudo apt-get update
 RUN sudo apt-get -y install curl gnupg
-RUN curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN sudo apt-get -y install nodejs
 
 # Install sqlite
