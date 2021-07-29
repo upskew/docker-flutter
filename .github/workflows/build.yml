@@ -1,14 +1,22 @@
-name: "trigger image build"
+name: "trigger image build and push to docker hub"
 on:
   schedule:
     - cron: "*/60 * * * *"
   workflow_dispatch:
 jobs:
-  stale:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - name: trigger image build
-        env:
-          BUILD_TRIGGER_ENDPOINT: ${{ secrets.DOCKER_HUB_BUILD_TRIGGER_ENDPOINT }}
-        run: |
-          curl --silent --show-error --fail -o /dev/null -w "%{http_code}"  -X POST "${BUILD_TRIGGER_ENDPOINT}"
+      - name: login to docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: user/app:latest
+      - name: print image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
