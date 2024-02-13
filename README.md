@@ -5,3 +5,4 @@ This image contains:
 - Flutter
 - Node.js
 - Sqlite
+- Curl
