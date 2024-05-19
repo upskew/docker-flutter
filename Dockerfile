@@ -12,7 +12,7 @@ ENV FLUTTER_ROOT=$FLUTTER_HOME
 ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
 RUN git clone https://github.com/flutter/flutter.git ${FLUTTER_HOME} \
-    && flutter channel stable \
+    && flutter channel beta \
     && flutter upgrade
 
 RUN yes | flutter doctor --android-licenses \
