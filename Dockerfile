@@ -27,3 +27,8 @@ RUN sudo apt-get -y install nodejs
 
 # Install sqlite
 RUN sudo apt-get -y install sqlite3 libsqlite3-dev
+
+# Install Git LFS
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
+    && sudo apt-get install -y git-lfs \
+    && git lfs install
