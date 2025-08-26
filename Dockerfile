@@ -1,19 +1,17 @@
 # Flutter base image
 # https://github.com/cirruslabs/docker-images-flutter
 # License: MIT (https://github.com/cirruslabs/docker-images-flutter/blob/master/LICENSE)
-FROM cirrusci/android-sdk:30
+FROM ghcr.io/cirruslabs/android-sdk:35
 
 USER root
 
 ENV FLUTTER_HOME=${HOME}/sdks/flutter \
-    FLUTTER_VERSION=master
+    FLUTTER_VERSION=3.35.2
 ENV FLUTTER_ROOT=$FLUTTER_HOME
 
 ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
-RUN git clone https://github.com/flutter/flutter.git ${FLUTTER_HOME} \
-    && flutter channel stable \
-    && flutter upgrade
+RUN git clone --depth 1 --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_HOME}
 
 RUN yes | flutter doctor --android-licenses \
     && flutter doctor \
