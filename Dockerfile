@@ -34,5 +34,5 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     && sudo apt-get install -y git-lfs \
     && git lfs install
 
-# Install clang++
-RUN sudo apt-get -y install clang
+# Install clang++ and lld linker
+RUN sudo apt-get -y install clang lld
