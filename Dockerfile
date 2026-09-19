@@ -6,7 +6,7 @@ FROM ghcr.io/cirruslabs/android-sdk:35
 USER root
 
 ENV FLUTTER_HOME=${HOME}/sdks/flutter \
-    FLUTTER_VERSION=3.47.4
+    FLUTTER_VERSION=3.47.5
 ENV FLUTTER_ROOT=$FLUTTER_HOME
 
 ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
